@@ -26,10 +26,11 @@ def mapquest(baseurl = 'https://www.mapquestapi.com/traffic/v2/incidents',
     params={}
     ):
     # boundingBox = 39.95, -105.25, 39.52, -104.71
-    params['boundingBox'] = str(lat+.25) + ',' + str(lon+.25) + ',' + str(lat-.25) + ',' + str(lon-.25)
+    params['boundingBox'] = str(lat+.05) + ',' + str(lon+.05) + ',' + str(lat-.05) + ',' + str(lon-.05)
     params['key'] = key
     url = baseurl + "?" + urllib.parse.urlencode(params)
-    return safeGet(url)
+    info = json.loads(safeGet(url).read())
+    return info
 
 
 # testmq = json.loads(mapquest().read())
@@ -44,11 +45,12 @@ def bing(baseurl = 'https://dev.virtualearth.net/REST/v1/Traffic/Incidents/',
     params = {}
     ):
 
-    mapArea = str(lat-.005) + ',' + str(lon-.005) + ',' + str(lat+.005) + ',' + str(lon+.005)
+    mapArea = str(lat-.05) + ',' + str(lon-.05) + ',' + str(lat+.05) + ',' + str(lon+.05)
     params['t'] = '1,2,3,4,5,6,7,8,9,10,11'
     params['key'] = config.bingKey
     url = baseurl + mapArea + "?" + urllib.parse.urlencode(params)
-    return safeGet(url)
+    info = json.loads(safeGet(url).read())
+    return info
 
 
 # testbing = json.loads(bing().read())
@@ -72,21 +74,44 @@ def wsdot(baseurl = '',
 
 # method for creating our google map
 def googlemap():
-
+    print()
 
 # method for making a request to weather underground
 # http://api.wunderground.com/api/Your_Key/conditions/q/lat,lon.json
+
 def wunderground(baseurl = 'https://api.wunderground.com/api/',
     lat=47.657265,
     lon=-122.307208,
     method = 'conditions',
     api_key = config.weatherKey,
-    format = 'json',
+    format = 'json'
     ):
     url = baseurl + api_key + '/' + method + '/q/' + str(lat) + ',' + str(lon) + '.' + format
-    print(url)
-    return safeGet(url)
+    info = json.loads(safeGet(url).read())
+    return info
 
 
 # testwu = json.loads(wunderground().read())
 # print(pretty(testwu))
+
+class UserCall(object):
+    def __init__(self, lat=47.657265, lon=-122.307208):
+        self.bing = bing(lat=lat,lon=lon)
+        self.mapquest = mapquest(lat=lat, lon=lon)
+        self.weather = wunderground(lat=lat, lon=lon)
+
+
+    def __str__(self):
+        return "test text"
+
+
+if __name__ == '__main__':
+    testusercall = UserCall()
+
+    print('--__BING__--')
+    print(pretty(testusercall.bing))
+    print('--__MAPQUEST__--')
+    print(pretty(testusercall.mapquest))
+    print('--__WEATHER__--')
+    print(pretty(testusercall.weather))
+    print(testusercall)
