@@ -114,7 +114,8 @@ def bRefine(info):
 # mapquest data refinement
 # severity 0-4
 # type key; 1 = Construction, 2 = Event, 3 = Congestion/Flow, 4 = Incident/accident
-#
+
+
 def mRefine(info):
     data = {}
     for incident in info['incidents']:
@@ -128,6 +129,13 @@ def mRefine(info):
         data[incident['fullDesc']] = list
     return data
 
+
+def averageData():
+    average = x
+# read info/data from mapquest
+# read info/data from bing
+
+    return average
 
 # weather data refinement
 def wRefine(info):
