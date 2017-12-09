@@ -1,4 +1,4 @@
-import config, urllib.request, urllib.error, urllib.parse, json
+import config, urllib.request, urllib.error, urllib.parse, json, webbrowser,os
 
 
 def pretty(obj):
@@ -108,10 +108,23 @@ class UserCall(object):
 if __name__ == '__main__':
     testusercall = UserCall()
 
-    print('--__BING__--')
-    print(pretty(testusercall.bing))
-    print('--__MAPQUEST__--')
-    print(pretty(testusercall.mapquest))
-    print('--__WEATHER__--')
-    print(pretty(testusercall.weather))
-    print(testusercall)
+    #print('--__BING__--')
+    #print(pretty(testusercall.bing))
+    #print('--__MAPQUEST__--')
+    #print(pretty(testusercall.mapquest))
+    #print('--__WEATHER__--')
+    #print(pretty(testusercall.weather))
+    #print(testusercall)
+
+import jinja2
+
+JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+                                       extensions=['jinja2.ext.autoescape'],
+                                       autoescape=True)
+
+tvals = {'photos': [sortedByViews, sortedByTags, sortedByComments]}
+
+f = open("output.html", 'w')
+template = JINJA_ENVIRONMENT.get_template('index.html')
+f.write(template.render(tvals))
+f.close()

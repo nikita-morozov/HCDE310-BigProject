@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="nojs html css_verticalspacer" lang="en-US">
+ <head>
+
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  <meta name="generator" content="2018.0.0.379"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style>
+	  /* Always set the map height explicitly to define the size of the div
+	   * element that contains the map. */
+	  #map {
+		height: 100%;
+	  }
+	  /* Optional: Makes the sample page fill the window. */
+	  html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	  }
+	</style>
+  <script type="text/javascript">
+   // Update the 'nojs'/'js' class on the html node
+document.documentElement.className = document.documentElement.className.replace(/\bnojs\b/g, 'js');
+
+// Check that all required assets are uploaded and up-to-date
+if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["museutils.js", "museconfig.js", "jquery.musepolyfill.bgsize.js", "webpro.js", "jquery.watch.js", "require.js", "index.css"], "outOfDate":[]};
+</script>
+  
+  <title>Home</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=444006867"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?crc=3922608326" id="pagesheet"/>
+   </head>
+ <body>
+
+  <div class="clearfix borderbox" id="page"><!-- group -->
+   <div class="clearfix grpelem" id="pu94-4"><!-- column -->
+    <div class="clearfix colelem" id="u94-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content -->
+     <p>Track My Traffic</p>
+    </div>
+    <form class="form-grp clearfix colelem" id="widgetu196" method="post" enctype="multipart/form-data" action=""><!-- none box -->
+     <div class="position_content" id="widgetu196_position_content">
+      <div class="fld-grp clearfix colelem" id="widgetu248" data-required="true"><!-- none box -->
+       <label class="fld-label actAsDiv clearfix colelem" id="u249-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true" for="widgetu248_input"><!-- content --><span class="actAsPara">Latitude:</span></label>
+       <span class="fld-input NoWrap actAsDiv clearfix colelem" id="u250-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content --><div id="u250-3"><input class="wrapped-input" type="text" id="widgetu248_input" name="custom_U248" tabindex="1"/><label class="wrapped-input fld-prompt" id="widgetu248_prompt" for="widgetu248_input"><span class="actAsPara">ex: 47.657265</span></label></div></span>
+      </div>
+      <div class="fld-grp clearfix colelem" id="widgetu260" data-required="true"><!-- none box -->
+       <label class="fld-label actAsDiv clearfix colelem" id="u262-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true" for="widgetu260_input"><!-- content --><span class="actAsPara">Longitude:</span></label>
+       <span class="fld-input NoWrap actAsDiv clearfix colelem" id="u263-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content --><div id="u263-3"><input class="wrapped-input" type="text" id="widgetu260_input" name="custom_U260" tabindex="2"/><label class="wrapped-input fld-prompt" id="widgetu260_prompt" for="widgetu260_input"><span class="actAsPara">ex: -122.307208</span></label></div></span>
+      </div>
+      <div class="fld-grp clearfix colelem" id="widgetu272" data-required="true" data-type="radiogroup"><!-- none box -->
+       <label class="fld-label actAsDiv clearfix colelem" id="u274-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content --><span class="actAsPara">Map Layers:</span></label>
+       <div class="fld-grp clearfix colelem" id="widgetu283" data-required="false" data-type="radio"><!-- none box -->
+        <div class="fld-radiobutton museBGSize grpelem" id="u289"><!-- simple frame -->
+         <input class="wrapped-input" type="radio" value="Traffic" spellcheck="false" id="widgetu283_input" name="custom_U272" tabindex="3"/>
+         <label for="widgetu283_input"></label>
+        </div>
+        <label class="fld-label actAsDiv clearfix grpelem" id="u284-4" for="widgetu283_input" data-sizePolicy="fluidWidth" data-pintopage="page_fixedLeft"><!-- content --><span class="actAsPara">Traffic</span></label>
+       </div>
+       <div class="fld-grp clearfix colelem" id="widgetu336" data-required="false" data-type="radio"><!-- none box -->
+        <div class="fld-radiobutton museBGSize grpelem" id="u337"><!-- simple frame -->
+         <input class="wrapped-input" type="radio" value="Weather" spellcheck="false" id="widgetu336_input" name="custom_U272" tabindex="3"/>
+         <label for="widgetu336_input"></label>
+        </div>
+        <label class="fld-label actAsDiv clearfix grpelem" id="u338-4" for="widgetu336_input" data-sizePolicy="fluidWidth" data-pintopage="page_fixedLeft"><!-- content --><span class="actAsPara">Weather</span></label>
+       </div>
+       <div class="fld-grp clearfix colelem" id="widgetu346" data-required="false" data-type="radio"><!-- none box -->
+        <div class="fld-radiobutton museBGSize grpelem" id="u348"><!-- simple frame -->
+         <input class="wrapped-input" type="radio" value="Incidents" spellcheck="false" id="widgetu346_input" name="custom_U272" tabindex="3"/>
+         <label for="widgetu346_input"></label>
+        </div>
+        <label class="fld-label actAsDiv clearfix grpelem" id="u347-4" for="widgetu346_input" data-sizePolicy="fluidWidth" data-pintopage="page_fixedLeft"><!-- content --><span class="actAsPara">Incidents</span></label>
+       </div>
+      </div>
+      <div class="clearfix colelem" id="pu211-4"><!-- group -->
+       <div class="clearfix grpelem" id="u211-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content -->
+        <p>Submitting Form...</p>
+       </div>
+       <div class="clearfix grpelem" id="u201-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content -->
+        <p>The server encountered an error.</p>
+       </div>
+       <div class="clearfix grpelem" id="u212-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content -->
+        <p>Updated</p>
+       </div>
+       <button class="submit-btn NoWrap rounded-corners clearfix grpelem" id="u202-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true" type="submit" value="Submit" tabindex="4"><!-- content -->
+        <div style="margin-top:-12px;height:12px;">
+         <p>Submit</p>
+        </div>
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+   <div class="clearfix grpelem" id="u98"><!-- group -->
+    <div class="size_fluid_width grpelem" id="u191" data-pintopage="page_fluidx" data-sizePolicy="fluidWidth"><!-- custom html -->
+   <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 34.04924594193164, lng: -118.24104309082031}
+        });
+
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKQHrfp0S1-BBr-k0AKm_Ml0SjSA6quho&callback=initMap">
+    </script>
+    </div>
+   </div>
+   <div class="verticalspacer" data-offset-top="438" data-content-above-spacer="438" data-content-below-spacer="62" data-sizePolicy="fixed" data-pintopage="page_fixedLeft"></div>
+   <div class="clearfix grpelem" id="u364-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content -->
+    <p>HCDE 310</p>
+   </div>
+  </div>
+  <div class="preload_images">
+   <img class="preload" src="images/radiobuttonunchecked.png?crc=3976871150" alt=""/>
+   <img class="preload" src="images/radiobuttonuncheckedrollover.png?crc=4276313674" alt=""/>
+   <img class="preload" src="images/radiobuttonuncheckedmousedown.png?crc=54863585" alt=""/>
+   <img class="preload" src="images/radiobuttonchecked.png?crc=4193302265" alt=""/>
+   <img class="preload" src="images/radiobuttoncheckedrollover.png?crc=88928956" alt=""/>
+   <img class="preload" src="images/radiobuttoncheckedmousedown.png?crc=4280357799" alt=""/>
+  </div>
+  <!-- Other scripts -->
+var suppressMissingFileError = false
+</body>
+</html>
