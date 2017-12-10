@@ -130,12 +130,16 @@ def mRefine(info):
     return data
 
 
-def averageData():
-    average = x
-# read info/data from mapquest
-# read info/data from bing
-
-    return average
+# average data of severity on 0-4 scale, average qualitative data
+def averageData(info):
+    severityAvg = 0
+    incidentAvg = ''
+    avg = {}
+ severityAvg = bRefine data list['severity'] + mRefine data list['severity']
+ incidentAvg = bRefine list['closed'] + mRefine list['impact']
+ avg['severityAvg'] = severityAvg
+ avg['incidentAvg'] = incidentAvg
+    return avg
 
 # weather data refinement
 def wRefine(info):
