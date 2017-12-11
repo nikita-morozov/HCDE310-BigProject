@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://TrackMyTraffic.com/index.html</loc>
-    <lastmod>2017-12-05</lastmod>
+    <lastmod>2017-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://TrackMyTraffic.com/images/cactus.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://TrackMyTraffic.com/images/trees.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>

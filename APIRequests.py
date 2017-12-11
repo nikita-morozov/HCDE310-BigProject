@@ -135,8 +135,8 @@ def averageData(info):
     severityAvg = 0
     incidentAvg = ''
     avg = {}
-    severityAvg = bRefine data list['severity'] + mRefine data list['severity']
-    incidentAvg = bRefine list['closed'] + mRefine list['impact']
+    severityAvg = bRefine(list['severity']) + mRefine(list['severity'])
+    incidentAvg = bRefine(list['closed']) + mRefine(list['impact'])
     avg['severityAvg'] = severityAvg
     avg['incidentAvg'] = incidentAvg
     return avg
@@ -157,13 +157,15 @@ def wRefine(info):
 
 # bing print method
 def dataPrint(information):
+    s = ""
     if len(information) == 0:
-        print("This location has no traffic incidents or data.")
+        return("This location has no traffic incidents or data.")
     else:
         for info in information:
-            print(info)
+            s += info+'\n'
             for value in information[info]:
-                print('\t' + value, '=', information[info][value])
+                s+= ('\t%s'%(value) + ' = %s\n'%information[info][value])
+    return(s)
 
 
 
@@ -190,18 +192,18 @@ if __name__ == '__main__':
 print('--__BING__--')
 print('...testing bing refine...')
 print()
-dataPrint(bRefine(userinput.bing))
+#dataPrint(bRefine(userinput.bing))
 print()
 
 print('--__MAPQUEST__--')
 print('...testing mapquest refine...')
 print()
-dataPrint(mRefine(userinput.mapquest))
+#dataPrint(mRefine(userinput.mapquest))
 print()
 
 print('--__WEATHER__--')
 print('...testing weather refine...')
 print()
 
-dataPrint(wRefine(userinput.weather))
+#ataPrint(wRefine(userinput.weather))
 print()
