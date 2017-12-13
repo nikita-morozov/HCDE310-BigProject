@@ -32,7 +32,8 @@ userinput = APIRequests.UserCall(lat=float(47.657), lon=float(-122.338))
 bing = APIRequests.bRefine(userinput.bing)
 print(bingLocs(bing))
 for incident in bingLocs(bing):
-    print(incident[0])
+    i = incident[0].index(',')
+    print(incident[0][i:])
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):

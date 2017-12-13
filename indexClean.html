@@ -130,7 +130,9 @@
 				
 				{% if bincidents is not none %}
 					{% for incident in bincidents %}
-						var coord = [{lat: {{incident[0][0]}}, lng: {{incident[0][1]}}},{lat: {{incident[1][0]}},lng: {{incident[1][1]}}}]
+						{% set i = incident[0].index(',') %}
+						{% set j = incident[1].index(',') %}
+						var coord = [{lat: {{incident[0][0:i]}}, lng: {{incident[0][i+1:]}}},lat: {{incident[1][0:j]}}, lng: {{incident[1][j+1:]}}}]
 						var poly = new google.maps.Polyline({
 						  path: coord,
 						  geodesic: true,
