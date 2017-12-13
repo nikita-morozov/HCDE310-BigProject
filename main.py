@@ -35,9 +35,11 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         lat = self.request.get('lat')
         lng = self.request.get('lng')
+        self.response.write(lat)
+
         if(lat == None):
-            lat = 47.657
-            lng = -122.338
+            lat = '47.657'
+            lng = '-122.338'
 
         userinput = APIRequests.UserCall(lat=float(lat), lon=float(lng))
 
