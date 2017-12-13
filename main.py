@@ -48,7 +48,7 @@ class MainHandler(webapp2.RequestHandler):
         bing = APIRequests.dataPrint(APIRequests.bRefine(userinput.bing))
         mapquest = APIRequests.mRefine(userinput.mapquest)
 
-        tvals = {'incidents': mqLocs(mapquest), 'location': 'Seattle', 'lat': 47.657, 'lng': -122.338,
+        tvals = {'incidents': mqLocs(mapquest), 'location': 'Seattle', 'lat': lat, 'lng': lng,
                  'mapKey': config.googleMapKey, 'bing': bing, 'mapquest': mapquest, 'weather': UGWeather}
 
         template = JINJA_ENVIRONMENT.get_template('indexClean.html')
