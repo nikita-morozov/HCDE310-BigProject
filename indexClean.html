@@ -130,7 +130,7 @@
 				var trafficLayer = new google.maps.TrafficLayer();
 				trafficLayer.setMap(map);
 				
-				var marker = new google.maps.Marker({
+				var me = new google.maps.Marker({
 				  position: current,
 				  map: map
 				});
@@ -138,8 +138,8 @@
 				//console.log(document.getElementById("lon").innerHTML);
 				map.addListener('click',function(){
 					window.setTimeout(function() {
-					  map.panTo(center.getPosition());
-					}, 3000);
+					  map.panTo(me.getPosition());
+					}, 2000);
 				});
 				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 				{% if incidents is not none %}
