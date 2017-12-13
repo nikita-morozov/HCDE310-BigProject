@@ -46,6 +46,10 @@
 				function getLocation(){
 					if (navigator.geolocation) {
 						navigator.geolocation.getCurrentPosition(fillPosition);
+						//$.ajax({
+						//	url:
+						//	success: function(response)
+						
 					}else{
 						alert("Geolocation not supported");
 					}
@@ -60,6 +64,7 @@
 					document.getElementById("warning").innerHTML = "";
 					document.getElementById("locbutt").style.display = 'none'; 
 				}
+
 			</script>
 		</div>
 		<div id = "Weather">
@@ -146,6 +151,7 @@
 				</tr>
 			  </thead>
 			  <tbody>
+			  {% if mapquest is not None %}
 				{% for incident in mapquest %}
 					<tr>
 						<td>{{incident}}</td>
@@ -154,6 +160,7 @@
 						{% endfor %}
 					</tr>
 				{% endfor %}
+			  {% endif %}
 			  </tbody>
 			</table>
 			
