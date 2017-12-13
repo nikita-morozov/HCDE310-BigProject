@@ -174,8 +174,8 @@
 				{% for incident in bing %}
 					<tr>
 						<td>{{incident}}</td>
-							{% for info in mapquest[incident] %}
-							<td>{{mapquest[incident][info]}}</td>
+							{% for info in bing[incident] %}
+							<td>{{bing[incident][info]}}</td>
 						{% endfor %}
 					</tr>
 				{% endfor %}
