@@ -39,7 +39,7 @@
 			<input id = "locbutt" type="button" value="Use Accurate Location" name="getLoc" onclick="getLocation()"/><b id = "warning">Warning: Your location is inaccurate.</b>
 			<strong id = "locDesc"></strong>
 			<p id = "cord">
-				Coordinates: <b id = "lat" value = 47.6344>47.6344</b>, <b id = "lon" value = -122.3422>-122.3422</b>
+				Coordinates: <b id = "lat" value = 47.657>47.657</b>, <b id = "lon" value = -122.338>-122.338</b>
 			</p>
 			<p></p>
 			<script>
@@ -65,7 +65,7 @@
 		<div id = "Weather">
 			<h2>Weather</h2>
 			
-				<strong>You are currently in the vicinity of Queen Anne, Seattle, Washington</strong>
+				<strong>You are currently in the vicinity of Wallingford, Seattle, Washington</strong>
 				<table class="table table-bordered">
 				  <thead>
 					<tr>
@@ -79,15 +79,15 @@
 					</tr>
 					<tr>
 					  <th scope="row">Temp</th>
-					  <td>43.0 F (6.1 C)</td>
+					  <td>41.6 F (5.3 C)</td>
 					</tr>
 					<tr>
 					  <th scope="row">Feels Like</th>
-					  <td>41 F (5 C)</td>
+					  <td>42 F (5 C)</td>
 					</tr>
 					<tr>
 					  <th scope="row">Wind</th>
-					  <td>From the WNW at 4.3 MPH Gusting to 4.9 MPH</td>
+					  <td>Calm</td>
 					</tr>
 				  </tbody>
 				</table>
@@ -121,44 +121,37 @@
 				//});
 				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 				
-					//console.log('47.605412,-122.336914');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.605412,-122.336914),
-					map: map,
-					icon: image
-				});
-				
-					//console.log('47.606594,-122.336433');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.606594,-122.336433),
-					map: map,
-					icon: image
-				});
-				
-					//console.log('47.618252,-122.350777');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.618252,-122.350777),
-					map: map,
-					icon: image
-				});
-				
-					//console.log('47.618252,-122.350777');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.618252,-122.350777),
-					map: map,
-					icon: image
-				});
-				
-					//console.log('47.618511,-122.332245');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.618511,-122.332245),
-					map: map,
-					icon: image
-				});
-				
 					//console.log('47.623215,-122.338463');
 					var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(47.623215,-122.338463),
+					map: map,
+					icon: image
+				});
+				
+					//console.log('47.676582,-122.315674');
+					var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(47.676582,-122.315674),
+					map: map,
+					icon: image
+				});
+				
+					//console.log('47.618252,-122.350777');
+					var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(47.618252,-122.350777),
+					map: map,
+					icon: image
+				});
+				
+					//console.log('47.659817,-122.314323');
+					var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(47.659817,-122.314323),
+					map: map,
+					icon: image
+				});
+				
+					//console.log('47.677284,-122.31739');
+					var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(47.677284,-122.31739),
 					map: map,
 					icon: image
 				});
@@ -177,23 +170,23 @@
 					icon: image
 				});
 				
-					//console.log('47.659817,-122.314323');
+					//console.log('47.618252,-122.350777');
 					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.659817,-122.314323),
+					position: new google.maps.LatLng(47.618252,-122.350777),
 					map: map,
 					icon: image
 				});
 				
-					//console.log('47.676582,-122.315674');
+					//console.log('47.618511,-122.332245');
 					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.676582,-122.315674),
+					position: new google.maps.LatLng(47.618511,-122.332245),
 					map: map,
 					icon: image
 				});
 				
-					//console.log('47.677284,-122.31739');
+					//console.log('47.697727,-122.328461');
 					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(47.677284,-122.31739),
+					position: new google.maps.LatLng(47.697727,-122.328461),
 					map: map,
 					icon: image
 				});
@@ -201,7 +194,7 @@
 			  }
 			</script>
 			<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkEKREhMHlD8RcsK0prnTn_fQJV2MRI7Y&callback=initMap">
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGAVvNBq1-6tfJViYkM91AxnfzDTPVJN4&callback=initMap">
 			</script>
 		</div>
 		<div id = "Incidents">
@@ -218,123 +211,112 @@
 			  <tbody>
 				
 					<tr>
-						<td>Intermittent lane closures due to long-term construction on 1st Ave both ways from University St to Spring St.</td>
-							
-							<td>47.605412,-122.336914</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Intermittent lane closures due to long-term construction on 2nd Ave Southbound from University St to Seneca St.</td>
-							
-							<td>47.606594,-122.336433</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Restrictions due to resurfacing work on 3rd Ave both ways between Virginia St and Broad St.</td>
-							
-							<td>47.618252,-122.350777</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>One lane closed due to construction work on 3rd Ave both ways from Blanchard St to Broad St.</td>
-							
-							<td>47.618252,-122.350777</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road permanently closed due to electricity work on Pontius Ave both ways from John St / Pontius Ave to Denny Way.</td>
-							
-							<td>47.618511,-122.332245</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction during the night on Republican St Eastbound between 9th Ave and Westlake Ave.</td>
-							
-							<td>47.623215,-122.338463</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
 						<td>Intermittent lane closures due to construction during the night on Republican St both ways between 9th St and Westlake Ave.</td>
 							
+							<td>False</td>
+						
+							<td>2</td>
+						
 							<td>47.623215,-122.338463</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>One lane closed due to paving repairs on Nickerson St both ways between Etruria St and 13th Avenue.</td>
-							
-							<td>47.655113,-122.372231</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction on Brooklyn Ave both ways between 45th St and Brooklyn Ave / 43rd St.</td>
-							
-							<td>47.659817,-122.314323</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
 						
 					</tr>
 				
 					<tr>
 						<td>Road closed due to construction on 66th St Eastbound from Roosevelt Way to 12th Ave.</td>
 							
-							<td>47.676582,-122.315674</td>
+							<td>True</td>
 						
 							<td>2</td>
 						
+							<td>47.676582,-122.315674</td>
+						
+					</tr>
+				
+					<tr>
+						<td>Restrictions due to resurfacing work on 3rd Ave both ways between Virginia St and Broad St.</td>
+							
 							<td>True</td>
+						
+							<td>2</td>
+						
+							<td>47.618252,-122.350777</td>
+						
+					</tr>
+				
+					<tr>
+						<td>Road closed due to construction on Brooklyn Ave both ways between 45th St and Brooklyn Ave / 43rd St.</td>
+							
+							<td>True</td>
+						
+							<td>2</td>
+						
+							<td>47.659817,-122.314323</td>
 						
 					</tr>
 				
 					<tr>
 						<td>Road closed due to construction on 67th St both ways from 12th Ave to Roosevelt Way.</td>
 							
-							<td>47.677284,-122.31739</td>
+							<td>True</td>
 						
 							<td>2</td>
 						
+							<td>47.677284,-122.31739</td>
+						
+					</tr>
+				
+					<tr>
+						<td>Road closed due to construction during the night on Republican St Eastbound between 9th Ave and Westlake Ave.</td>
+							
 							<td>True</td>
+						
+							<td>2</td>
+						
+							<td>47.623215,-122.338463</td>
+						
+					</tr>
+				
+					<tr>
+						<td>One lane closed due to paving repairs on Nickerson St both ways between Etruria St and 13th Avenue.</td>
+							
+							<td>False</td>
+						
+							<td>2</td>
+						
+							<td>47.655113,-122.372231</td>
+						
+					</tr>
+				
+					<tr>
+						<td>One lane closed due to construction work on 3rd Ave both ways from Blanchard St to Broad St.</td>
+							
+							<td>False</td>
+						
+							<td>2</td>
+						
+							<td>47.618252,-122.350777</td>
+						
+					</tr>
+				
+					<tr>
+						<td>Road permanently closed due to electricity work on Pontius Ave both ways from John St / Pontius Ave to Denny Way.</td>
+							
+							<td>True</td>
+						
+							<td>2</td>
+						
+							<td>47.618511,-122.332245</td>
+						
+					</tr>
+				
+					<tr>
+						<td>Intermittent lane closures due to construction on 1st Ave both ways between 92nd St and 95th St.</td>
+							
+							<td>False</td>
+						
+							<td>2</td>
+						
+							<td>47.697727,-122.328461</td>
 						
 					</tr>
 				

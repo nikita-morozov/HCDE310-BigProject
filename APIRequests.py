@@ -1,4 +1,4 @@
-import config, urllib.request, urllib.error, urllib.parse, json
+import config, urllib, json
 
 
 def pretty(obj):
@@ -7,11 +7,11 @@ def pretty(obj):
 
 def safeGet(url):
     try:
-        return urllib.request.urlopen(url)
-    except urllib.error.HTTPError as e:
+        return urllib.urlopen(url)
+    except urllib.HTTPError, e:
         print("The server couldn't fulfill the request.")
         print("Error code: ", e.code)
-    except urllib.error.URLError as e:
+    except urllib.URLError, e:
         print("We failed to reach a server")
         print("Reason: ", e.reason)
     return None
@@ -29,7 +29,7 @@ def mapquest(baseurl = 'https://www.mapquestapi.com/traffic/v2/incidents',
     # boundingBox = 39.95, -105.25, 39.52, -104.71
     params['boundingBox'] = str(lat+.05) + ',' + str(lon-.05) + ',' + str(lat-.05) + ',' + str(lon+.05)
     params['key'] = key
-    url = baseurl + "?" + urllib.parse.urlencode(params)
+    url = baseurl + "?" + urllib.urlencode(params)
     info = json.loads(safeGet(url).read())
     return info
 
@@ -50,7 +50,7 @@ def bing(baseurl = 'https://dev.virtualearth.net/REST/v1/Traffic/Incidents/',
     params['t'] = '1,2,3,4,5,6,7,8,9,10,11'
     params['key'] = config.bingKey
     params['includeLocationCodes'] = 'true'
-    url = baseurl + mapArea + "?" + urllib.parse.urlencode(params)
+    url = baseurl + mapArea + "?" + urllib.urlencode(params)
     info = json.loads(safeGet(url).read())
     return info
 
@@ -66,7 +66,7 @@ def bing(baseurl = 'https://dev.virtualearth.net/REST/v1/Traffic/Incidents/',
 def wsdot(baseurl = '',
     params = {}
     ):
-    url = baseurl + "?" + urllib.parse.urlencode(params)
+    url = baseurl + "?" + urllib.urlencode(params)
     return safeGet(url)
 
 
