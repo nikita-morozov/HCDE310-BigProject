@@ -74,10 +74,11 @@
 			var lat = document.getElementById("customlat").value;
 			var lng = document.getElementById("customlng").value;
 			console.log(lat);
-			var myreg = new RegExp("^([-+]?)([\d]{1,3})(\.)(\d+)");
-			if(!myreg.test(lat)){
+			var mylatreg = new RegExp("^-?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$");
+			var mylngreg = new RegExp("^-?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[1-7][0-9])(?:(?:\.[0-9]{1,6})?))$");
+			if(mylatreg.test(lat)){
 				document.getElementById("customlat").style = "border: 2px solid red;";
-			}else if(!myreg.test(lng)){
+			}else if(mylngreg.test(lng)){
 				document.getElementById("customlng").style = "border: 2px solid red;";
 			} else {
 				window.location.replace('https://trackmytraffic-1512998385287.appspot.com/?lat=' + lat + '&lng=' + lng);
