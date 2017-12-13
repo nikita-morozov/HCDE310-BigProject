@@ -74,11 +74,11 @@
 			var lat = document.getElementById("customlat").value;
 			var lng = document.getElementById("customlng").value;
 			
-			var myreg = new RegExp("^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}");
+			var myreg = new RegExp("^([-+]?)([\d]{1,3})(\.)(\d+)");
 			if(!myreg.test(lat)){
-				alert('bad lat')
+				document.getElementById("customlat").className = "form-control form-control-danger";
 			}else if(!myreg.test(lng)){
-				alert('bad lng')
+				document.getElementById("customlng").className = "form-control form-control-danger";
 			} else {
 				alert('success')
 				//window.location.replace('https://trackmytraffic-1512998385287.appspot.com/?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude);
