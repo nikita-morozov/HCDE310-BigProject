@@ -26,14 +26,14 @@ tvals = {'location':g.city,'lat': g.lat,'lng':g.lng,'mapURL': googleMapUrl, 'bin
 for a in tvals:
     print(tvals[a])
 f = open("output.html", 'w')
-template = JINJA_ENVIRONMENT.get_template('index.html')
+template = JINJA_ENVIRONMENT.get_template('indexClean.html')
 f.write(template.render(tvals))
 f.close()
 
 
 @app.route('/')
 def index():
-    index = JINJA_ENVIRONMENT.get_template('index.html').render(tvals)
+    index = JINJA_ENVIRONMENT.get_template('indexClean.html').render(tvals)
     return index
 
 

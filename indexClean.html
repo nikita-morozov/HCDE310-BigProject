@@ -35,7 +35,7 @@
 			<p id = "cord">
 				Coordinates: <b id = "lat">Location Unknown: Please press button to find current location.</b>, <b id = "lon"></b>
 			</p>
-			<p></p>
+			<p>{{locationInfo}}</p>
 			<script>
 				function getLocation(){
 					if (navigator.geolocation) {
@@ -68,139 +68,14 @@
 				</tr>
 			  </thead>
 			  <tbody>
-				
+				{% for incident in mapquest %}
 					<tr>
-						<td>Intermittent lane closures due to long-term construction on 1st Ave both ways from University St to Spring St.</td>
-							
-							<td>47.605412,-122.336914</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
+						<td>{{incident}}</td>
+							{% for info in mapquest[incident] %}
+							<td>{{mapquest[incident][info]}}</td>
+						{% endfor %}
 					</tr>
-				
-					<tr>
-						<td>Intermittent lane closures due to long-term construction on 2nd Ave Southbound from University St to Seneca St.</td>
-							
-							<td>47.606594,-122.336433</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Restrictions due to resurfacing work on 3rd Ave both ways between Virginia St and Broad St.</td>
-							
-							<td>47.618252,-122.350777</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>One lane closed due to construction work on 3rd Ave both ways from Blanchard St to Broad St.</td>
-							
-							<td>47.618252,-122.350777</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road permanently closed due to electricity work on Pontius Ave both ways from John St / Pontius Ave to Denny Way.</td>
-							
-							<td>47.618511,-122.332245</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction during the night on Republican St Eastbound between 9th Ave and Westlake Ave.</td>
-							
-							<td>47.623215,-122.338463</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Intermittent lane closures due to construction during the night on Republican St both ways between 9th St and Westlake Ave.</td>
-							
-							<td>47.623215,-122.338463</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>One lane closed due to paving repairs on Nickerson St both ways between Etruria St and 13th Avenue.</td>
-							
-							<td>47.655113,-122.372231</td>
-						
-							<td>2</td>
-						
-							<td>False</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction on Brooklyn Ave both ways between 45th St and Brooklyn Ave / 43rd St.</td>
-							
-							<td>47.659817,-122.314323</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Accident on Green Lake Way at 45th St.</td>
-							
-							<td>47.661404,-122.346748</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction on 66th St Eastbound from Roosevelt Way to 12th Ave.</td>
-							
-							<td>47.676582,-122.315674</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
-					<tr>
-						<td>Road closed due to construction on 67th St both ways from 12th Ave to Roosevelt Way.</td>
-							
-							<td>47.677284,-122.31739</td>
-						
-							<td>2</td>
-						
-							<td>True</td>
-						
-					</tr>
-				
+				{% endfor %}
 			  </tbody>
 			</table>
 			
