@@ -1,9 +1,4 @@
-import config, os, logging, APIRequests, geocoder, jinja2
-from flask import Flask
-
-
-app = Flask(__name__)
-
+import config, os, logging, APIRequests, geocoder, jinja2, urllib
 
 def mqLocs(info):
     if len(info) > 1:
@@ -42,29 +37,14 @@ f = open("output.html", 'w')
 template = JINJA_ENVIRONMENT.get_template('indexClean.html')
 f.write(template.render(tvals))
 f.close()
-print(mapquest)
-#print(bingLocs(bing))
-print(mqLocs(mapquest))
-
-@app.route('/')
-def index():
-    index = JINJA_ENVIRONMENT.get_template('indexClean.html').render(tvals)
-    return index
 
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
 
+#--------------------------------------------------------------------------------------------
+import webapp2
 
-if __name__ == '__main__':
-    # This is used when running locally. Gunicorn is used to run the
-    # application on Google App Engine. See entrypoint in app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('hello world')
 
-
-# print(testusercall)
+application = webapp2.WSGIApplication([('/',MainHandler)], debug=True)
