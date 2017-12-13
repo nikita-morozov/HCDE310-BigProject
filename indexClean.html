@@ -127,6 +127,20 @@
 					});
 				{% endfor %}
 				{% endif %}
+				{% if bincidents is not none %}
+					{% for incident in bincidents %}
+						var flightPath = new google.maps.Polyline({
+						  path:[{google.maps.LatLng({{bincidents[incident][0]}})}, {google.maps.LatLng({{bincidents[incident][1]}})}],
+						  geodesic: true,
+						  strokeColor: '#FF0000',
+						  strokeOpacity: 1.0,
+						  strokeWeight: 2
+						});
+
+						flightPath.setMap(map);
+					});
+				{% endfor %}
+				{% endif %}
 			  }
 			</script>
 			<script async defer
