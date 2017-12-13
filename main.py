@@ -43,8 +43,14 @@ f.close()
 #--------------------------------------------------------------------------------------------
 import webapp2
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('hello world')
+        logging.info("In MainHandler")
+
+        template_values = {}
+        template_values['page_title'] = "Flickr Tag Search"
+        template = JINJA_ENVIRONMENT.get_template('greetform.html')
+        self.response.write(template.render(template_values))
 
 application = webapp2.WSGIApplication([('/',MainHandler)], debug=True)
