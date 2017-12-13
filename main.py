@@ -11,7 +11,7 @@ def bingLocs(info):
     if info == "This location has no traffic incidents or data.":
         return None
     else:
-        locs = [incident['startCoordinates'] for incident in info]
+        locs = [info[incident]['startCoordinates'] for incident in info]
     return locs
 
 #MapUrl with traffic?
