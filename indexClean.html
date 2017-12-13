@@ -130,7 +130,7 @@
 				{% if bincidents is not none %}
 					{% for incident in bincidents %}
 						var flightPath = new google.maps.Polyline({
-						  path:[{google.maps.LatLng({{bincidents[incident][0]}})}, {google.maps.LatLng({{bincidents[incident][1]}})}],
+						  path:[{google.maps.LatLng({{incident[0]}})}, {google.maps.LatLng({{incident[1]}})}],
 						  geodesic: true,
 						  strokeColor: '#FF0000',
 						  strokeOpacity: 1.0,

@@ -31,6 +31,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 userinput = APIRequests.UserCall(lat=float(47.657), lon=float(-122.338))
 bing = APIRequests.bRefine(userinput.bing)
 print(bingLocs(bing))
+for incident in bingLocs(bing):
+    print(incident[0])
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
