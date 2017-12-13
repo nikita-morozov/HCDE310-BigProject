@@ -1,22 +1,22 @@
-import config, urllib.request, urllib.error, urllib.parse, json, webbrowser,os
-import APIRequests
-#Get data for each of the tabs:
+import config, os, logging, APIRequests, geocoder, jinja2
+from flask import Flask
+
+
+app = Flask(__name__)
+
 
 #MapUrl with traffic?
-import geocoder
 g = geocoder.ip('me')
 print(g.latlng)
-print(g.lat)
-print(g.lng)
 userinput = APIRequests.UserCall(lat=float(g.lat), lon=float(g.lng))
 googleMapUrl = "https://www.google.com/maps/embed/v1/view?key=%s&center=%s,%s&zoom=12"%(config.googleMapKey,g.lat,g.lng)
 #Weather
 UGWeather = APIRequests.wRefine(userinput.weather)
 
+
 #Incidents
 bing = APIRequests.dataPrint(APIRequests.bRefine(userinput.bing))
 mapquest = APIRequests.mRefine(userinput.mapquest)
-import jinja2
 
 JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
                                        extensions=['jinja2.ext.autoescape'],
@@ -31,8 +31,24 @@ f.write(template.render(tvals))
 f.close()
 
 
+@app.route('/')
+def index():
+    index = JINJA_ENVIRONMENT.get_template('index.html').render(tvals)
+    return index
 
 
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request.')
+    return """
+    An internal error occurred: <pre>{}</pre>
+    See logs for full stacktrace.
+    """.format(e), 500
 
+
+if __name__ == '__main__':
+    # This is used when running locally. Gunicorn is used to run the
+    # application on Google App Engine. See entrypoint in app.yaml.
+    app.run(host='127.0.0.1', port=8080, debug=True)
 
 # print(testusercall)

@@ -1,4 +1,5 @@
-import config, urllib.request, urllib.error, urllib.parse, json, webbrowser,os
+import config, urllib.request, urllib.error, urllib.parse, json
+
 
 def pretty(obj):
     return json.dumps(obj, sort_keys=True, indent=2)
@@ -189,21 +190,20 @@ if __name__ == '__main__':
     userinput = UserCall(lat=float(latitude), lon=float(longitude))
 
 
-print('--__BING__--')
-print('...testing bing refine...')
-print()
-#dataPrint(bRefine(userinput.bing))
-print()
-
-print('--__MAPQUEST__--')
-print('...testing mapquest refine...')
-print()
-#dataPrint(mRefine(userinput.mapquest))
-print()
-
-print('--__WEATHER__--')
-print('...testing weather refine...')
-print()
-
-#ataPrint(wRefine(userinput.weather))
-print()
+# print('--__BING__--')
+# print('...testing bing refine...')
+# print()
+# dataPrint(bRefine(userinput.bing))
+# print()
+#
+# print('--__MAPQUEST__--')
+# print('...testing mapquest refine...')
+# print()
+# dataPrint(mRefine(userinput.mapquest))
+# print()
+#
+# print('--__WEATHER__--')
+# print('...testing weather refine...')
+# print()
+# dataPrint(wRefine(userinput.weather))
+# print()
