@@ -151,7 +151,7 @@
 				</tr>
 			  </thead>
 			  <tbody>
-			  {% if mapquest is not None %}
+			  {% if mapquest is defined %}
 				{% for incident in mapquest %}
 					<tr>
 						<td>{{incident}}</td>
