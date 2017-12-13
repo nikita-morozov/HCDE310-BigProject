@@ -50,9 +50,12 @@ class MainHandler(webapp2.RequestHandler):
         UGWeather = APIRequests.wRefine(userinput.weather)
         bing = APIRequests.bRefine(userinput.bing)
         mapquest = APIRequests.mRefine(userinput.mapquest)
+        scoreNum = userinput.averageData()
+        scoreStr = userinput.averageString()
+
 
         tvals = {'incidents': mqLocs(mapquest), 'bincidents': bingLocs(bing), 'lat': lat, 'lng': lng,
-                 'mapKey': config.googleMapKey, 'bing': bing, 'mapquest': mapquest, 'weather': UGWeather}
+                 'mapKey': config.googleMapKey, 'bing': bing, 'mapquest': mapquest, 'weather': UGWeather, 'scoreNum': scoreNum, 'scoreStr': scoreStr}
 
         template = JINJA_ENVIRONMENT.get_template('indexClean.html')
         self.response.write(template.render(tvals))
