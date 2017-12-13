@@ -18,15 +18,15 @@
   <body>
 		<div class="container">
 		<!--Header and Navbar-->
-		<h1>Track My Traffic</h1>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<h1 id = 'Home'>Track My Traffic</h1>
+		<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="#"></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-			  <a class="nav-item nav-link active" href="#Location">Home <span class="sr-only">(current)</span></a>
+			  <a class="nav-item nav-link active" href="#Home">Home <span class="sr-only">(current)</span></a>
 			  <a class="nav-item nav-link" href="#Weather">Weather</a>
 			  <a class="nav-item nav-link" href="#Traffic">Traffic</a>
 			  <a class="nav-item nav-link" href="#Incidents">Incidents</a> 
@@ -36,12 +36,8 @@
 		<!--Main Content-->
 		<div id = "Location">
 			<h2>Location Information</h2>
-			<input id = "locbutt" type="button" value="Use Current Location" name="getLoc" onclick="getLocation()"/><b id = "warning"></b>
-			<strong id = "locDesc"></strong>
-			<p id = "cord">
-				Coordinates: <b id = "lat" value = {{lat}}>{{lat}}</b>, <b id = "lon" value = {{lng}}>{{lng}}</b>
-			</p>
-			<p>{{locationInfo}}</p>
+			<input id = "locbutt" type="button" value="Use Current Location" class="btn btn-primary" name="getLoc" onclick="getLocation()"/><b id = "warning"></b><strong id = "locDesc"></strong><span id = "cord">   Current coordinates: <b id = "lat" value = {{lat}}>{{lat}}</b>, <b id = "lon" value = {{lng}}>{{lng}}</b></span>
+			<p></p>
 			<script>
 				function getLocation(){
 					if (navigator.geolocation) {
@@ -67,7 +63,7 @@
 			<label for="inputPassword2" class="sr-only">Longitude</label>
 			<input type="text" class="form-control" id="customlng" placeholder="-122.338457">
 		  </div>
-		  <input type="button" class="btn btn-primary" onclick = "goto()">Submit</button>
+		  <input type="button" value="Submit" class="btn btn-primary" onclick = "goto()"></button>
 		</form>
 		<script>
 		function goto(){
@@ -86,6 +82,7 @@
 		}
 		</script>
 		</div>
+		<div><p></p></div>
 		<div id = "Weather">
 			<h2>Weather</h2>
 			{% for city in weather %}
@@ -117,6 +114,7 @@
 				</table>
 			{% endfor %}
 		</div>
+		<div><p></p></div>
 		<div id = "Traffic">
 			<h2>Traffic</h2>
 			 <div id="map"></div>
@@ -176,6 +174,7 @@
 			src="https://maps.googleapis.com/maps/api/js?key={{mapKey}}&callback=initMap">
 			</script>
 		</div>
+		<div><p></p></div>
 		<div id = "Incidents">
 			<h2>Incidents</h2>
 			<h3>Mapquest</h3>
