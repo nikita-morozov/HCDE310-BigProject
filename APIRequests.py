@@ -196,11 +196,16 @@ class UserCall(object):
             for incident in mqsev:
                 alldata.append(mqsev[incident]['severity'])
 
-        self.average = sum(alldata) / len(alldata)
+        if(len(alldata))!=0:
+            self.average = sum(alldata) / len(alldata)
+        else:
+            self.average = -1
 
     def averageString(self):
         if self.average is 0:
             self.averagestr = "Empty"
+        elif self.average is -1:
+            self.averagestr = "Error"
         elif self.average is 1:
             self.averagestr = "Lightly Conjested"
         elif self.average is 2:
