@@ -125,14 +125,16 @@
 				//	}, 3000);
 				//});
 				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-				{% for incident in incidents %}
-					//console.log('{{incident}}');
-					var marker = new google.maps.Marker({
-					position: new google.maps.LatLng({{incident}}),
-					map: map,
-					icon: image
-				});
+				{% if incidents is defined %}
+					{% for incident in incidents %}
+						//console.log('{{incident}}');
+						var marker = new google.maps.Marker({
+						position: new google.maps.LatLng({{incident}}),
+						map: map,
+						icon: image
+					});
 				{% endfor %}
+				{% endif %}
 			  }
 			</script>
 			<script async defer
