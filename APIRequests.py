@@ -170,24 +170,27 @@ def dataPrint(information):
 
 
 
+
+
+
 class UserCall(object):
     def __init__(self, lat=47.657265, lon=-122.307208):
         self.bing = bing(lat=lat,lon=lon)
         self.mapquest = mapquest(lat=lat, lon=lon)
         self.weather = wunderground(lat=lat, lon=lon)
 
-
     def __str__(self):
         return "test text"
 
 
 if __name__ == '__main__':
-    latitude = 47.657265#input('Please enter a latitude: ')
+    latitude = input('Please enter a latitude: ')
     print("latitude = 47.657265")
-    longitude = 122.307208 # input('Please enter a longitude: ')
-    print('longitude = 122.307208');
+    longitude = input('Please enter a longitude: ')
+    print('longitude = 122.307208')
     print()
     userinput = UserCall(lat=float(latitude), lon=float(longitude))
+    print(userinput)
 
 
 # print('--__BING__--')
