@@ -136,7 +136,7 @@
 				});
 				//console.log(document.getElementById("lat").innerHTML);
 				//console.log(document.getElementById("lon").innerHTML);
-				map.addListener('click',function(){
+				map.addListener('drag',function(){
 					window.setTimeout(function() {
 					  map.panTo(me.getPosition());
 					}, 2000);
