@@ -37,7 +37,7 @@ class MainHandler(webapp2.RequestHandler):
         lng = self.request.get('lng')
         self.response.write(lat)
 
-        if(lat == None):
+        if(lat == None or lat == ''):
             lat = '47.657'
             lng = '-122.338'
 
