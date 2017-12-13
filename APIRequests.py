@@ -145,14 +145,17 @@ def averageData(info):
 def wRefine(info):
     data = {}
     list = {}
-    list['coordinates'] = str(info['current_observation']['observation_location']['latitude']) +\
-                          ',' + str(info['current_observation']['observation_location']['longitude'])
-    list['temp'] = info['current_observation']['temperature_string']
-    list['feelslike'] = info['current_observation']['feelslike_string']
-    list['weather'] = info['current_observation']['weather']
-    list['wind'] = info['current_observation']['wind_string']
-    data[info['current_observation']['observation_location']['full']] = list
-    return data
+    if(info.get('current_observation') == None):
+        return data
+    else :
+        list['coordinates'] = str(info['current_observation']['observation_location']['latitude']) +\
+                              ',' + str(info['current_observation']['observation_location']['longitude'])
+        list['temp'] = info['current_observation']['temperature_string']
+        list['feelslike'] = info['current_observation']['feelslike_string']
+        list['weather'] = info['current_observation']['weather']
+        list['wind'] = info['current_observation']['wind_string']
+        data[info['current_observation']['observation_location']['full']] = list
+        return data
 
 
 # bing print method
