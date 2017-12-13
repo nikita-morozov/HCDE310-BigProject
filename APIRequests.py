@@ -202,13 +202,13 @@ class UserCall(object):
         if self.average is 0:
             self.averagestr = "Empty"
         elif self.average is 1:
-            self.averagestr = "Light"
+            self.averagestr = "Lightly Conjested"
         elif self.average is 2:
-            self.averagestr = "Moderate"
+            self.averagestr = "Moderately Conjested"
         elif self.average is 3:
             self.averagestr = "Busy"
         else:
-            self.averagestr = "Heavy"
+            self.averagestr = "Heavily Conjested"
         return self.averagestr
 
 
