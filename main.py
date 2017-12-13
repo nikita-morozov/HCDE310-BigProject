@@ -21,7 +21,7 @@ def bingLocs(info):
 
 #MapUrl with traffic?
 g = geocoder.ip('me')
-print(g.latlng)
+#print(g.latlng)
 userinput = APIRequests.UserCall(lat=float(g.lat), lon=float(g.lng))
 googleMapUrl = "https://www.google.com/maps/embed/v1/view?key=%s&center=%s,%s&zoom=12"%(config.googleMapKey,g.lat,g.lng)
 
@@ -37,15 +37,14 @@ JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
                                        extensions=['jinja2.ext.autoescape'],
                                        autoescape=True)
 
-tvals = {'location':g.city,'lat': g.lat,'lng':g.lng,'mapURL': googleMapUrl, 'bing' : bing, 'mapquest' : mapquest, 'weather' : UGWeather}
-for a in tvals:
-    print(tvals[a])
+tvals = {'incidents': mqLocs(mapquest),'location':g.city,'lat': g.lat,'lng':g.lng,'mapKey': config.googleMapKey, 'bing' : bing, 'mapquest' : mapquest, 'weather' : UGWeather}
 f = open("output.html", 'w')
 template = JINJA_ENVIRONMENT.get_template('indexClean.html')
 f.write(template.render(tvals))
 f.close()
+print(mapquest)
+#print(bingLocs(bing))
 print(mqLocs(mapquest))
-print(bingLocs(bing))
 
 @app.route('/')
 def index():
