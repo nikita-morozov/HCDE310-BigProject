@@ -11,7 +11,7 @@ def bingLocs(info):
     if info == "This location has no traffic incidents or data.":
         return None
     else:
-        locs = [info[incident]['startCoordinates'] for incident in info]
+        locs = [[info[incident]['startCoordinates'], info[incident]['endCoordinates']] for incident in info]
     return locs
 
 #MapUrl with traffic?
@@ -48,7 +48,7 @@ class MainHandler(webapp2.RequestHandler):
         bing = APIRequests.bRefine(userinput.bing)
         mapquest = APIRequests.mRefine(userinput.mapquest)
 
-        tvals = {'incidents': mqLocs(mapquest), 'location': 'Seattle', 'lat': lat, 'lng': lng,
+        tvals = {'incidents': mqLocs(mapquest), 'bincidents': bingLocs(bing), 'lat': lat, 'lng': lng,
                  'mapKey': config.googleMapKey, 'bing': bing, 'mapquest': mapquest, 'weather': UGWeather}
 
         template = JINJA_ENVIRONMENT.get_template('indexClean.html')
