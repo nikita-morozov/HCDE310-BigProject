@@ -7,10 +7,10 @@ def pretty(obj):
 def safeGet(url):
     try:
         return urllib.urlopen(url)
-    except urllib.error.HTTPError as e:
+    except urllib.HTTPError, e:
         print("The server couldn't fulfill the request.")
         print("Error code: ", e.code)
-    except urllib.error.URLError as e:
+    except urllib.URLError, e:
         print("We failed to reach a server")
         print("Reason: ", e.reason)
     return None

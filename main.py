@@ -1,4 +1,6 @@
-import config, os, logging, APIRequests, geocoder, jinja2, urllib
+import config, os, APIRequests, jinja2, webapp2
+
+
 
 def mqLocs(info):
     if len(info) > 1:
@@ -15,42 +17,42 @@ def bingLocs(info):
     return locs
 
 #MapUrl with traffic?
-g = geocoder.ip('me')
 #print(g.latlng)
-userinput = APIRequests.UserCall(lat=float(g.lat), lon=float(g.lng))
-googleMapUrl = "https://www.google.com/maps/embed/v1/view?key=%s&center=%s,%s&zoom=12"%(config.googleMapKey,g.lat,g.lng)
 
-#Weather
-UGWeather = APIRequests.wRefine(userinput.weather)
-
-
-#Incidents
-bing = APIRequests.dataPrint(APIRequests.bRefine(userinput.bing))
-mapquest = APIRequests.mRefine(userinput.mapquest)
 
 JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
                                        extensions=['jinja2.ext.autoescape'],
                                        autoescape=True)
 
-tvals = {'incidents': mqLocs(mapquest),'location':g.city,'lat': g.lat,'lng':g.lng,'mapKey': config.googleMapKey, 'bing' : bing, 'mapquest' : mapquest, 'weather' : UGWeather}
-f = open("output.html", 'w')
-template = JINJA_ENVIRONMENT.get_template('indexClean.html')
-f.write(template.render(tvals))
-f.close()
 
-
-
-#--------------------------------------------------------------------------------------------
-import webapp2
+# f = open("output.html", 'r+')
+# f.write(template.render(tvals))
+# f.close()
+# print(mapquest)
+# #print(bingLocs(bing))
+# print(mqLocs(mapquest))
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        logging.info("In MainHandler")
+        lat = self.request.get('lat')
+        lng = self.request.get('lng')
+        if(lat == None):
+            lat = 47.657
+            lng = -122.338
 
-        template_values = {}
-        template_values['page_title'] = "Flickr Tag Search"
-        template = JINJA_ENVIRONMENT.get_template('greetform.html')
-        self.response.write(template.render(template_values))
+        userinput = APIRequests.UserCall(lat=float(lat), lon=float(lng))
 
-application = webapp2.WSGIApplication([('/',MainHandler)], debug=True)
+        
+        UGWeather = APIRequests.wRefine(userinput.weather)
+        bing = APIRequests.dataPrint(APIRequests.bRefine(userinput.bing))
+        mapquest = APIRequests.mRefine(userinput.mapquest)
+
+        tvals = {'incidents': mqLocs(mapquest), 'location': 'Seattle', 'lat': 47.657, 'lng': -122.338,
+                 'mapKey': config.googleMapKey, 'bing': bing, 'mapquest': mapquest, 'weather': UGWeather}
+
+        template = JINJA_ENVIRONMENT.get_template('indexClean.html')
+        self.response.write(template.render(tvals))
+
+
+application = webapp2.WSGIApplication([('/.*', MainHandler)], debug=True)

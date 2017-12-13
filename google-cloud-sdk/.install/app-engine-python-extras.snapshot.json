@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "data": {
+        "contents_checksum": "18e30790f29590f8549673fb9ffdd195be1d268f317799f34fde33b51cc78c59", 
+        "source": "", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "app-engine-python", 
+        "core"
+      ], 
+      "details": {
+        "description": "Extra libraries for the App Engine Python Extentions.", 
+        "display_name": "gcloud app Python Extensions (Extra Libraries)"
+      }, 
+      "id": "app-engine-python-extras", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20171110154953, 
+        "version_string": "1.9.63"
+      }
+    }
+  ], 
+  "revision": 20171201165802, 
+  "schema_version": {
+    "no_update": false, 
+    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz", 
+    "version": 3
+  }, 
+  "version": "182.0.0"
+}
