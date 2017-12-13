@@ -5,11 +5,26 @@ from flask import Flask
 app = Flask(__name__)
 
 
+def mqLocs(info):
+    if len(info) > 1:
+        locs = [info[incident]['coordinates'] for incident in info]
+    else:
+        return None
+    return locs
+
+def bingLocs(info):
+    if info == "This location has no traffic incidents or data.":
+        return None
+    else:
+        locs = [incident['startCoordinates'] for incident in info]
+    return locs
+
 #MapUrl with traffic?
 g = geocoder.ip('me')
 print(g.latlng)
 userinput = APIRequests.UserCall(lat=float(g.lat), lon=float(g.lng))
 googleMapUrl = "https://www.google.com/maps/embed/v1/view?key=%s&center=%s,%s&zoom=12"%(config.googleMapKey,g.lat,g.lng)
+
 #Weather
 UGWeather = APIRequests.wRefine(userinput.weather)
 
@@ -29,7 +44,8 @@ f = open("output.html", 'w')
 template = JINJA_ENVIRONMENT.get_template('indexClean.html')
 f.write(template.render(tvals))
 f.close()
-
+print(mqLocs(mapquest))
+print(bingLocs(bing))
 
 @app.route('/')
 def index():
@@ -50,5 +66,6 @@ if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
+
 
 # print(testusercall)
