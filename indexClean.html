@@ -136,12 +136,11 @@
 				});
 				//console.log(document.getElementById("lat").innerHTML);
 				//console.log(document.getElementById("lon").innerHTML);
-				//map.addListener('click',function(){
-				//	update();
-				//	window.setTimeout(function() {
-				//	  map.panTo(center.getPosition());
-				//	}, 3000);
-				//});
+				map.addListener('click',function(){
+					window.setTimeout(function() {
+					  map.panTo(center.getPosition());
+					}, 3000);
+				});
 				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 				{% if incidents is not none %}
 					{% for incident in incidents %}
@@ -162,7 +161,7 @@
 						var poly = new google.maps.Polyline({
 						  path: coord,
 						  geodesic: true,
-						  strokeColor: '#FF0000',
+						  strokeColor: '#ff00ff',
 						  strokeOpacity: 0.6,
 						  strokeWeight: 4
 						});
