@@ -67,7 +67,7 @@
 			<label for="inputPassword2" class="sr-only">Longitude</label>
 			<input type="text" class="form-control" id="customlng" placeholder="-122.338457">
 		  </div>
-		  <button class="btn btn-primary" onclick = "goto()">Submit</button>
+		  <input type="button" class="btn btn-primary" onclick = "goto()">Submit</button>
 		</form>
 		<script>
 		function goto(){
@@ -76,9 +76,9 @@
 			console.log(lat);
 			var mylatreg = new RegExp("^-?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$");
 			var mylngreg = new RegExp("^-?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[1-7][0-9])(?:(?:\.[0-9]{1,6})?))$");
-			if(mylatreg.test(lat)){
+			if(!mylatreg.test(lat)){
 				document.getElementById("customlat").style = "border: 2px solid red;";
-			}else if(mylngreg.test(lng)){
+			}else if(!mylngreg.test(lng)){
 				document.getElementById("customlng").style = "border: 2px solid red;";
 			} else {
 				window.location.replace('https://trackmytraffic-1512998385287.appspot.com/?lat=' + lat + '&lng=' + lng);
