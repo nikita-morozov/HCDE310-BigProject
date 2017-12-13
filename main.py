@@ -27,9 +27,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 # f.write(template.render(tvals))
 # f.close()
 # print(mapquest)
-# #print(bingLocs(bing))
 # print(mqLocs(mapquest))
-
+userinput = APIRequests.UserCall(lat=float(47.657), lon=float(-122.338))
+bing = APIRequests.bRefine(userinput.bing)
+print(bingLocs(bing))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -44,7 +45,7 @@ class MainHandler(webapp2.RequestHandler):
 
         
         UGWeather = APIRequests.wRefine(userinput.weather)
-        bing = APIRequests.dataPrint(APIRequests.bRefine(userinput.bing))
+        bing = APIRequests.bRefine(userinput.bing)
         mapquest = APIRequests.mRefine(userinput.mapquest)
 
         tvals = {'incidents': mqLocs(mapquest), 'location': 'Seattle', 'lat': lat, 'lng': lng,

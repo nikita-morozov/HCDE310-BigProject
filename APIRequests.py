@@ -45,7 +45,7 @@ def bing(baseurl = 'https://dev.virtualearth.net/REST/v1/Traffic/Incidents/',
     params = {}
     ):
 
-    mapArea = str(lat-.05) + ',' + str(lon-.05) + ',' + str(lat+.05) + ',' + str(lon+.05)
+    mapArea = str(lat-2.05) + ',' + str(lon-2.05) + ',' + str(lat+2.05) + ',' + str(lon+2.05)
     params['t'] = '1,2,3,4,5,6,7,8,9,10,11'
     params['key'] = config.bingKey
     params['includeLocationCodes'] = 'true'
@@ -99,16 +99,19 @@ def wunderground(baseurl = 'https://api.wunderground.com/api/',
 # bing data refinement
 def bRefine(info):
     data = {}
-    for incident in info['resourceSets'][0]['resources']:
-        list = {}
-        list['startCoordinates'] = (str(incident['point']['coordinates'][0]) + ',' + str(incident['point']['coordinates'][1]))
-        list['endCoordinates'] = (str(incident['toPoint']['coordinates'][0]) + ',' + str(incident['toPoint']['coordinates'][1]))
-        # Severity scale 0-4
-        list['severity'] = (incident['severity'])
-        # road closed?
-        list['closed'] = (incident['roadClosed'])
-        data[incident['description']] = list
-    return data
+    if (info.get('resourceSets') == None):
+        return data
+    else:
+        for incident in info['resourceSets'][0]['resources']:
+            list = {}
+            list['startCoordinates'] = (str(incident['point']['coordinates'][0]) + ',' + str(incident['point']['coordinates'][1]))
+            list['endCoordinates'] = (str(incident['toPoint']['coordinates'][0]) + ',' + str(incident['toPoint']['coordinates'][1]))
+            # Severity scale 0-4
+            list['severity'] = (incident['severity'])
+            # road closed?
+            list['closed'] = (incident['roadClosed'])
+            data[incident['description']] = list
+        return data
 
 
 # mapquest data refinement
@@ -118,28 +121,21 @@ def bRefine(info):
 
 def mRefine(info):
     data = {}
-    for incident in info['incidents']:
-        list = {}
-        # lat,lon of incident
-        list['coordinates'] = str(incident['lat']) + ',' + str(incident['lng'])
-        # Severity scale 0-4
-        list['severity'] = incident['severity']
-        # impacting key is whether it impacts traffic
-        list['impact'] = incident['impacting']
-        data[incident['fullDesc']] = list
-    return data
+    if (info.get('incidents') == None):
+        return data
+    else:
+        for incident in info['incidents']:
+            list = {}
+            # lat,lon of incident
+            list['coordinates'] = str(incident['lat']) + ',' + str(incident['lng'])
+            # Severity scale 0-4
+            list['severity'] = incident['severity']
+            # impacting key is whether it impacts traffic
+            list['impact'] = incident['impacting']
+            data[incident['fullDesc']] = list
+        return data
 
 
-# average data of severity on 0-4 scale, average qualitative data
-def averageData(info):
-    severityAvg = 0
-    incidentAvg = ''
-    avg = {}
-    severityAvg = bRefine(list['severity']) + mRefine(list['severity'])
-    incidentAvg = bRefine(list['closed']) + mRefine(list['impact'])
-    avg['severityAvg'] = severityAvg
-    avg['incidentAvg'] = incidentAvg
-    return avg
 
 # weather data refinement
 def wRefine(info):
@@ -180,32 +176,59 @@ class UserCall(object):
         self.bing = bing(lat=lat,lon=lon)
         self.mapquest = mapquest(lat=lat, lon=lon)
         self.weather = wunderground(lat=lat, lon=lon)
+        self.average = -1
+        self.averagestr = ''
 
     def __str__(self):
         return "test text"
 
+    # average data of severity on 0-4 scale, average qualitative data
+    def averageData(self):
+        alldata = []
+        bingsev = bRefine(self.bing)
+        mqsev = mRefine(self.mapquest)
+
+        if len(bingsev) > 0:
+            for incident in bingsev:
+                alldata.append(bingsev[incident]['severity'])
+
+        if len(mqsev) > 0:
+            for incident in mqsev:
+                alldata.append(mqsev[incident]['severity'])
+
+        self.average = sum(alldata) / len(alldata)
+
+    def averageString(self):
+        if self.average is 0:
+            self.averagestr = "Empty"
+        elif self.average is 1:
+            self.averagestr = "Light"
+        elif self.average is 2:
+            self.averagestr = "Moderate"
+        elif self.average is 3:
+            self.averagestr = "Busy"
+        else:
+            self.averagestr = "Heavy"
+        return self.averagestr
+
 
 if __name__ == '__main__':
-    #latitude = input('Please enter a latitude: ')
-    print("latitude = 47.657265")
-    #longitude = input('Please enter a longitude: ')
-    print('longitude = 122.307208')
-    print()
-    #userinput = UserCall(lat=float(latitude), lon=float(longitude))
-    #print(userinput)
+    userinput = UserCall(lat=float(47.657265), lon=float(-122.307208))
+    userinput.averageData()
+    print userinput.average
+    print userinput.averageString()
+    print userinput.averagestr
 
 
-# print('--__BING__--')
-# print('...testing bing refine...')
-# print()
-# dataPrint(bRefine(userinput.bing))
-# print()
-#
-# print('--__MAPQUEST__--')
-# print('...testing mapquest refine...')
-# print()
-# dataPrint(mRefine(userinput.mapquest))
-# print()
+    print('--__BING__--')
+    print('...testing bing refine...')
+    print(bRefine(userinput.bing))
+
+    #
+    print('--__MAPQUEST__--')
+    print('...testing mapquest refine...')
+    print(dataPrint(mRefine(userinput.mapquest)))
+
 #
 # print('--__WEATHER__--')
 # print('...testing weather refine...')
