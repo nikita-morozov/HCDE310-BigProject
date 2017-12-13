@@ -1,6 +1,5 @@
 import config, urllib, json
 
-
 def pretty(obj):
     return json.dumps(obj, sort_keys=True, indent=2)
 
@@ -184,13 +183,13 @@ class UserCall(object):
 
 
 if __name__ == '__main__':
-    latitude = input('Please enter a latitude: ')
+    #latitude = input('Please enter a latitude: ')
     print("latitude = 47.657265")
-    longitude = input('Please enter a longitude: ')
+    #longitude = input('Please enter a longitude: ')
     print('longitude = 122.307208')
     print()
-    userinput = UserCall(lat=float(latitude), lon=float(longitude))
-    print(userinput)
+    #userinput = UserCall(lat=float(latitude), lon=float(longitude))
+    #print(userinput)
 
 
 # print('--__BING__--')

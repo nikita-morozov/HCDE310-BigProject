@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
+<<<<<<< HEAD
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 2.7.10 (/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7)" jdkType="Python SDK" />
+=======
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 2.7 (HCDE310-BigProject)" jdkType="Python SDK" />
+>>>>>>> 0e099377b5a0411b6a666f7763f504b85ae3d076
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
