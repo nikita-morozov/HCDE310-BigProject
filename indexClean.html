@@ -128,21 +128,11 @@
 				{% endfor %}
 				{% endif %}
 				
-				var coord = [{lat: 46.86647, lng: -121.54036},
-							{lat: 46.75465,lng: -121.55679}]
-				
-				var poly = new google.maps.Polyline({
-						  path:coord,
-						  geodesic: true,
-						  strokeColor: '#FF0000',
-						  strokeOpacity: 1.0,
-						  strokeWeight: 2
-						});
-					poly.setMap(map);
-				/*{% if bincidents is not none %}
+				{% if bincidents is not none %}
 					{% for incident in bincidents %}
+						var coord = [{lat: {{incident[0][0]}}, lng: {{incident[0][1]}}},{lat: {{incident[1][0]}},lng: {{incident[1][1]}}}]
 						var poly = new google.maps.Polyline({
-						  path:[{google.maps.LatLng({{incident[0]}})}, {google.maps.LatLng({{incident[1]}})}],
+						  path: coord,
 						  geodesic: true,
 						  strokeColor: '#FF0000',
 						  strokeOpacity: 1.0,
@@ -150,7 +140,7 @@
 						});
 					poly.setMap(map);
 				{% endfor %}
-				{% endif %}*/
+				{% endif %}
 			  }
 			</script>
 			<script async defer
