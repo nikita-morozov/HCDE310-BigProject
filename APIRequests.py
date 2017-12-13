@@ -222,12 +222,12 @@ if __name__ == '__main__':
 
     print('--__BING__--')
     print('...testing bing refine...')
-    print(bRefine(userinput.bing))
+    print(dataPrint(bRefine(userinput.bing)))
 
     #
     print('--__MAPQUEST__--')
     print('...testing mapquest refine...')
-    print(dataPrint(mRefine(userinput.mapquest)))
+    #print(dataPrint(mRefine(userinput.mapquest)))
 
 #
 # print('--__WEATHER__--')

@@ -36,7 +36,7 @@
 		<!--Main Content-->
 		<div id = "Location">
 			<h2>Location Information</h2>
-			<input id = "locbutt" type="button" value="Use Accurate Location" name="getLoc" onclick="getLocation()"/><b id = "warning">Warning: Your location is inaccurate.</b>
+			<input id = "locbutt" type="button" value="Update Location" name="getLoc" onclick="getLocation()"/><b id = "warning"></b>
 			<strong id = "locDesc"></strong>
 			<p id = "cord">
 				Coordinates: <b id = "lat" value = {{lat}}>{{lat}}</b>, <b id = "lon" value = {{lng}}>{{lng}}</b>
@@ -46,7 +46,6 @@
 				function getLocation(){
 					if (navigator.geolocation) {
 						navigator.geolocation.getCurrentPosition(fillPosition);
-						
 					}else{
 						alert("Geolocation not supported");
 					}
@@ -136,6 +135,7 @@
 		</div>
 		<div id = "Incidents">
 			<h2>Incidents</h2>
+			<h3>Mapquest</h3>
 			<table class="table table-sm table-light">
 			  <thead>
 				<tr>
@@ -148,6 +148,30 @@
 			  <tbody>
 			  {% if mapquest is not none %}
 				{% for incident in mapquest %}
+					<tr>
+						<td>{{incident}}</td>
+							{% for info in mapquest[incident] %}
+							<td>{{mapquest[incident][info]}}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			  {% endif %}
+			  </tbody>
+			</table>
+			<h3>Bing</h3>
+			<table class="table table-sm table-light">
+			  <thead>
+				<tr>
+				  <th scope="col">Description</th>
+				  <th scope="col">Start</th>
+				  <th scope="col">Severity</th>
+				  <th scope="col">End</th>
+				  <th scope="col">Closed</th>
+				</tr>
+			  </thead>
+			  <tbody>
+			  {% if bing is not none %}
+				{% for incident in bing %}
 					<tr>
 						<td>{{incident}}</td>
 							{% for info in mapquest[incident] %}
