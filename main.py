@@ -1,7 +1,5 @@
 import config, os, APIRequests, jinja2, webapp2
 
-
-
 def mqLocs(info):
     if len(info) > 1:
         locs = [info[incident]['coordinates'] for incident in info]
