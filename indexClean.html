@@ -127,8 +127,12 @@
 					});
 				{% endfor %}
 				{% endif %}
+				
+				var coord = [{lat: 46.86647, lng: -121.54036},
+							{lat: 46.75465,lng: -121.55679}]
+				
 				var poly = new google.maps.Polyline({
-						  path:[{google.maps.LatLng(46.86647,-121.54036)}, {google.maps.LatLng(46.75465,-121.55679)}],
+						  path:coord,
 						  geodesic: true,
 						  strokeColor: '#FF0000',
 						  strokeOpacity: 1.0,
