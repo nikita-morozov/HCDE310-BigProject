@@ -142,11 +142,6 @@
 				});
 				//console.log(document.getElementById("lat").innerHTML);
 				//console.log(document.getElementById("lon").innerHTML);
-				map.addListener('drag',function(){
-					window.setTimeout(function() {
-					  map.panTo(me.getPosition());
-					}, 10000);
-				});
 				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 				{% if incidents is not none %}
 					{% for incident in incidents %}
